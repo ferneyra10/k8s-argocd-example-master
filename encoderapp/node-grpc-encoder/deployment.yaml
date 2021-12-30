@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: grpc-encoder
+  name: grpc-encoder
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app: grpc-encoder
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: grpc-encoder
+    spec:
+      containers:
+      - image: zetogk/argocdexample-encoder:v4
+        name: argocdexample-accounts
+        envFrom:
+          - configMapRef:
+              name: cm-accounts
+        resources: {}
+status: {}

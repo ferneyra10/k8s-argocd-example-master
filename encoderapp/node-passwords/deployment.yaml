@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: fastify-passwords
+  name: fastify-passwords
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app: fastify-passwords
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: fastify-passwords
+    spec:
+      containers:
+      - image: zetogk/argocdexample-passwords:v4
+        name: argocdexample-passwords
+        envFrom:
+          - configMapRef:
+              name: cm-passwords
+        resources: {}
+status: {}

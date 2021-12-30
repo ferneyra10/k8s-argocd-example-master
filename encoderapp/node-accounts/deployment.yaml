@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: fastify-accounts
+  name: fastify-accounts
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app: fastify-accounts
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: fastify-accounts
+    spec:
+      containers:
+      - image: zetogk/argocdexample-accounts:v3
+        name: argocdexample-accounts
+        envFrom:
+          - configMapRef:
+              name: cm-accounts
+        resources: {}
+status: {}
