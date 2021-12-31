@@ -6,7 +6,7 @@ metadata:
     app: fastify-passwords
   name: fastify-passwords
 spec:
-  replicas: 10
+  replicas: 2
   selector:
     matchLabels:
       app: fastify-passwords
